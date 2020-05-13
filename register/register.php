@@ -34,6 +34,16 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
         echo 'Username exists, please choose another!';
     } else {
         // Insert new account
+        // Email validation
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            exit('Email is not valid!');
+        }
+
+        // Password length validation
+        if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
+            exit('Password must be between 5 and 20 characters long!');
+        }
+
         // Username doesnt exists, insert new account
         if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
             // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
