@@ -44,3 +44,5 @@ function template_footer()
     </html>
     EOT;
 }
+
+?>
