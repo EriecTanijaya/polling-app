@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
+}
+
 include 'functions.php';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
@@ -11,7 +19,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="content home">
 	<h2>Polls</h2>
-	<p>Welcome to the index page, you can view the list of polls below.</p>
+	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below.</p>
 	<a href="create.php" class="create-poll">Create Poll</a>
 	<table>
         <thead>

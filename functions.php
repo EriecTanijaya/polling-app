@@ -23,7 +23,7 @@ function template_header($title)
         <head>
             <meta charset="utf-8">
             <title>$title</title>
-            <link href="style.css" rel="stylesheet" type="text/css">
+            <link href="src/style.css" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
         </head>
         <body>
@@ -31,6 +31,8 @@ function template_header($title)
             <div>
                 <h1>Voting & Poll System</h1>
                 <a href="index.php"><i class="fas fa-poll-h"></i>Polls</a>
+                <a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </div>
         </nav>
     EOT;
