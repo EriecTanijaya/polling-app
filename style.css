@@ -150,7 +150,7 @@ body.loggedin {
     margin: 0 0 10px 0;
 }
 
-home .create-poll {
+.home .create-poll {
     display: inline-block;
     text-decoration: none;
     background-color: #38b673;
@@ -383,4 +383,10 @@ home .create-poll {
     color: #FFFFFF;
     justify-content: center;
     align-items: center;
+}
+
+.error-form {
+    text-align: center;
+    color: #bd4080;
+    font-weight: bold;
 }

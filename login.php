@@ -5,6 +5,12 @@
         header('Location: index.php');
         exit;
     }
+
+    $msg = "";
+
+    if (isset($_SESSION['msg'])) {
+        $msg = $_SESSION['msg'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +26,11 @@
 <body>
     <div class="login">
         <h1>Login</h1>
+        <?php
+            if ($msg != "") {
+                echo '<div class="error-form"><i class="fas fa-exclamation-circle"></i> ' . $msg . '</div>';
+            }
+        ?>
         <form action="auth.php" method="post">
             <label for="username">
                 <i class="fas fa-user"></i>
