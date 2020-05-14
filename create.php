@@ -1,5 +1,5 @@
 <?php
-include 'src/functions.php';
+include 'functions.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
 
