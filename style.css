@@ -188,6 +188,7 @@ body.loggedin {
 
 .home table tbody tr {
     border-bottom: 1px solid #d3dae0;
+    background-color: var(--nord5);
 }
 
 .home table tbody tr:nth-child(even) {

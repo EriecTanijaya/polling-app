@@ -29,7 +29,11 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endif;?>
 	<h2>Polls</h2>
 	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below.</p>
-	<a href="create.php" class="create-poll">Create Poll</a>
+    <?php
+    if (isset($_SESSION['su'])) {
+        echo '<a href="create.php" class="create-poll">Create Poll</a>';
+    }
+    ?>
 	<table>
         <thead>
             <tr>
@@ -48,7 +52,11 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				<td><?=$poll['answers']?></td>
                 <td class="actions">
 				    <a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
-                    <a href="delete.php?id=<?=$poll['id']?>" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>
+                    <?php
+                    if (isset($_SESSION['su'])) {
+                        echo '<a href="delete.php?id=' . $poll['id'] . '" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>';
+                    }
+                    ?>
                 </td>
             </tr>
             <?php $num++; ?>

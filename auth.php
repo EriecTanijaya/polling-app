@@ -60,6 +60,11 @@ if ($stmt = $con->prepare('SELECT id, password, ip FROM accounts WHERE username 
                 $stmt->execute();
             }
 
+            // dev
+            if ($_SESSION['name'] == "admin") { //ganti ke eriectan nanti
+                $_SESSION['su'] = true;
+            }
+
             header('Location: index.php');
         } else {
             $_SESSION['msg'] = "Incorrect password!";
