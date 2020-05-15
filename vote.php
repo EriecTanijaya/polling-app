@@ -39,7 +39,6 @@ if (isset($_GET['id'])) {
         
         for ($i = 0; $i < count($exists_voter); $i++) {
             if ($exists_voter[$i]["account_id"] == $_SESSION["id"]) {
-                $_SESSION['msg'] = 'Kamu sudah vote pada polling "'. $poll['title'] .'"';
                 header('Location: result.php?id=' . $poll['id']);
                 exit;
             }
