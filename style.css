@@ -1,6 +1,5 @@
 @import "nord.css";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
-
 * {
     box-sizing: border-box;
     font-family: 'Roboto', 'Open Sans', sans-serif;
@@ -71,47 +70,110 @@ body {
     transition: background-color 0.2s;
 }
 
-.navtop {
-    background-color: var(--nord10);
-    height: 60px;
-    width: 100%;
-    border: 0;
-}
-
-.navtop div {
-    display: flex;
-    margin: 0 auto;
-    width: 1000px;
-    height: 100%;
-}
-
-.navtop div h1, .navtop div a {
-    display: inline-flex;
-    align-items: center;
-}
-
-.navtop div h1 {
-    flex: 1;
+.navbar-icon-top .navbar-nav .nav-link>.fa {
+    position: relative;
+    width: 36px;
     font-size: 24px;
-    padding: 0;
-    margin: 0;
-    color: #ecf0f6;
-    font-weight: bold;
 }
 
-.navtop div a {
-    padding: 0 20px;
-    text-decoration: none;
-    color: #c5d2e5;
-    font-weight: bold;
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
+    font-size: 0.75rem;
+    position: absolute;
+    right: 0;
+    font-family: sans-serif;
 }
 
-.navtop div a i {
-    padding: 2px 8px 0 0;
+.navbar-icon-top .navbar-nav .nav-link>.fa {
+    top: 3px;
+    line-height: 12px;
 }
 
-.navtop div a:hover {
-    color: #eaebed;
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
+    top: -10px;
+}
+
+@media (min-width: 576px) {
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
 }
 
 body.loggedin {
@@ -119,7 +181,7 @@ body.loggedin {
 }
 
 .content {
-    width: 1000px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -128,14 +190,15 @@ body.loggedin {
     padding: 25px 0;
     font-size: 22px;
     border-bottom: 1px solid #ebebeb;
-    color: #666666;
+    color: var(--nord3);
+    font-weight: bold;
 }
 
 .content>p, .content>div {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
     margin: 25px 0;
     padding: 25px;
-    background-color: #fff;
+    background-color: var(--nord5);
 }
 
 .content>p table td, .content>div table td {
@@ -218,12 +281,12 @@ body.loggedin {
 
 .home table tbody tr td.actions {
     padding: 8px;
-    text-align: right;
+    text-align: center;
 }
 
 .home table tbody tr td.actions .view, .home table tbody tr td.actions .edit, .home table tbody tr td.actions .trash {
     display: inline-flex;
-    text-align: right;
+    text-align: center;
     text-decoration: none;
     color: #FFFFFF;
     padding: 10px 12px;
@@ -252,6 +315,13 @@ body.loggedin {
 
 .home table tbody tr td.actions .view:hover {
     background-color: #31a364;
+}
+
+@media all and (max-width:30em) {
+    .home table tbody tr td.actions .view, .home table tbody tr td.actions .edit, .home table tbody tr td.actions .trash {
+        display: block;
+        margin: 0.4em auto;
+    }
 }
 
 .update form {

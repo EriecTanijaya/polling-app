@@ -23,7 +23,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?=template_header('Polls')?>
 
-<div class="content home">
+<div class="container-fluid content home">
     <?php if ($msg): ?>
         <div class="notif-warning"><p><i class="fas fa-exclamation-circle"></i> <?=$msg?></p></div>
     <?php endif;?>
@@ -34,24 +34,24 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo '<a href="create.php" class="create-poll">Create Poll</a>';
     }
     ?>
-	<table>
-        <thead>
+	<table class="table table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <td>#</td>
-                <td>Title</td>
-				<td>Answers</td>
-                <td></td>
+                <td scope="col">#</td>
+                <td scope="col">Title</td>
+				<td scope="col">Answers</td>
+                <td scope="col">Action</td>
             </tr>
         </thead>
         <tbody>
             <?php $num = 1; ?>
             <?php foreach ($polls as $poll): ?>
             <tr>
-                <td><?=$num?></td>
+                <th scope="row"><?=$num?></td>
                 <td><?=$poll['title']?></td>
 				<td><?=$poll['answers']?></td>
                 <td class="actions">
-				    <a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
+                    <a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
                     <?php
                     if (isset($_SESSION['su'])) {
                         echo '<a href="delete.php?id=' . $poll['id'] . '" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>';

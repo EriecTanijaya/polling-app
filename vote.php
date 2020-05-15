@@ -86,7 +86,7 @@ if (isset($_GET['id'])) {
 
 <?=template_header('Poll Vote')?>
 
-<div class="content poll-vote">
+<div class="container-fluid content poll-vote">
 	<h2><?=$poll['title']?></h2>
 	<?php
         if ($poll['desc'] != "") {

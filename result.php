@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
 
 <?=template_header('Poll Results')?>
 
-<div class="content poll-result">
+<div class="container-fluid content poll-result">
     <h2><?=$poll['title']?></h2>
     <?php
         if ($poll['desc'] != "") {
@@ -51,8 +51,10 @@ if (isset($_GET['id'])) {
         <?php foreach ($poll_answers as $poll_answer): ?>
         <div class="poll-question">
             <p><?=$poll_answer['title']?> <span>(<?=$poll_answer['votes']?> Votes)</span></p>
-            <div class="result-bar" style= "width:<?=@round(($poll_answer['votes'] / $total_votes) * 100)?>%">
-                <?=@round(($poll_answer['votes'] / $total_votes) * 100)?>%
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style= "width:<?=@round(($poll_answer['votes'] / $total_votes) * 100)?>%">
+                    <?=@round(($poll_answer['votes'] / $total_votes) * 100)?>%
+                </div>
             </div>
         </div>
         <?php endforeach;?>

@@ -27,33 +27,29 @@ $stmt->close();
 
 <?=template_header('Polls')?>
 
-<div class="content">
+<div class="container-fluid content">
 	<h2>Profile Page</h2>
 	<div>
 		<p>Your account details are below:</p>
-		<table>
+		<table class="table table-bordered">
 			<tr>
-				<td>NPM:</td>
+				<td scope="col">NPM:</td>
 				<td><?=$npm?></td>
 			</tr>
 			<tr>
-				<td>Prodi:</td>
+				<td scope="col">Prodi:</td>
 				<td><?=$prodi?></td>
 			</tr>
 			<tr>
-				<td>Username:</td>
+				<td scope="col">Username:</td>
 				<td><?=$_SESSION['name']?></td>
 			</tr>
 			<tr>
-				<td>Password:</td>
-				<td><?=$password?></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
+				<td scope="col">Email:</td>
 				<td><?=$email?></td>
 			</tr>
 			<tr>
-				<td>IP address:</td>
+				<td scope="col">IP address:</td>
 				<td><?=$_SESSION['ip']?></td>
 			</tr>
 		</table>
