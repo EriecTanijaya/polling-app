@@ -40,10 +40,7 @@ function template_header($title)
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">
-                            <i class="fa fas fa-poll-h">
-                                <!-- boleh pake bade-danger / badge-warning / badge-primary / badge-info / badge-success -->
-                                <span class="badge badge-danger">11</span>
-                            </i>
+                            <i class="fa fas fa-poll-h"></i>
                             Polls
                         </a>
                     </li>

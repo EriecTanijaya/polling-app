@@ -53,6 +53,7 @@
                 <i class="fas fa-envelope"></i>
             </label>
             <input type="email" name="email" placeholder="Email" id="email" required>
+            <p>dah punya akun? <a href="login.php">sini login</a></p>
             <input type="submit" value="Register">
         </form>
     </div>
