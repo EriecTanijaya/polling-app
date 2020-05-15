@@ -17,16 +17,13 @@ include 'functions.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
 
-// Check if POST data is not empty
 if (!empty($_POST)) {
-    // Post data not empty insert a new record
-    // Check if POST variable "title" exists, if not default the value to blank, basically the same for all variables
     $title = isset($_POST['title']) ? $_POST['title'] : '';
     $desc = isset($_POST['desc']) ? $_POST['desc'] : '';
-    // Insert new record into the "polls" table
+
     $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?)');
     $stmt->execute([$title, $desc]);
-    // Below will get the last insert ID, this will be the poll id
+    
     $poll_id = $pdo->lastInsertId();
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $answers = isset($_POST['answers']) ? explode(PHP_EOL, $_POST['answers']) : '';
@@ -36,11 +33,10 @@ if (!empty($_POST)) {
             continue;
         }
 
-        // Add answer to the "poll_answers" table
         $stmt = $pdo->prepare('INSERT INTO poll_answers VALUES (NULL, ?, ?, 0)');
         $stmt->execute([$poll_id, $answer]);
     }
-    // Output message
+    
     $msg = 'Created Successfully!';
 }
 ?>
