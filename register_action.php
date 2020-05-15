@@ -27,13 +27,33 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
     // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
-    $stmt->store_result();
+    
     // Store the result so we can check if the account exists in the database.
+    $stmt->store_result();
+
+    session_start();
+
     if ($stmt->num_rows > 0) {
         // Username already exists
         $_SESSION['msg'] = "Username exists, please choose another!";
         header('Location: register.php');
+        exit;
     } else {
+        // check NPM
+        if ($stmt = $con->prepare('SELECT id FROM accounts WHERE npm = ?')) {
+            $stmt->bind_param('s', $_POST['npm']);
+            $stmt->execute();
+            
+            // Store the result so we can check if the account exists in the database.
+            $stmt->store_result();
+
+            if ($stmt->num_rows > 0) {
+                $_SESSION['msg'] = "NPM exists, please login with existing account!";
+                header('Location: register.php');
+                exit;
+            }
+        }
+
         // Insert new account
         // Email validation
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {

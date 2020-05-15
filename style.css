@@ -389,6 +389,12 @@ body.loggedin {
 
 .error-form {
     text-align: center;
-    color: #bd4080;
+    color: #d74338;
+    font-weight: bold;
+}
+
+.content .notif-warning {
+    background-color: #d74338;
+    color: #ffffff;
     font-weight: bold;
 }

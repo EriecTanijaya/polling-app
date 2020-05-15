@@ -7,7 +7,6 @@
     }
 
     $msg = "";
-
     if (isset($_SESSION['msg'])) {
         $msg = $_SESSION['msg'];
         $_SESSION['msg'] = "";

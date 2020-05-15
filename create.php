@@ -40,8 +40,12 @@ if (!empty($_POST)) {
 ?>
 
 <?=template_header('Create Poll')?>
-
+    
 <div class="content update">
+    <?php if ($msg): ?>
+        <p><?=$msg?></p>
+    <?php endif;?>
+
 	<h2>Create Poll</h2>
     <form action="create.php" method="post">
         <label for="title">Title</label>
@@ -52,9 +56,6 @@ if (!empty($_POST)) {
         <textarea name="answers" id="answers"></textarea>
         <input type="submit" value="Create">
     </form>
-    <?php if ($msg): ?>
-    <p><?=$msg?></p>
-    <?php endif;?>
 </div>
 
 <?=template_footer()?>

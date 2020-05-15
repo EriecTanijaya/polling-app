@@ -7,6 +7,12 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$msg = "";
+if (isset($_SESSION['msg'])) {
+    $msg = $_SESSION['msg'];
+    $_SESSION['msg'] = "";
+}
+
 include 'functions.php';
 // Connect to MySQL
 $pdo = pdo_connect_mysql();
@@ -18,6 +24,9 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?=template_header('Polls')?>
 
 <div class="content home">
+    <?php if ($msg): ?>
+        <div class="notif-warning"><p><i class="fas fa-exclamation-circle"></i> <?=$msg?></p></div>
+    <?php endif;?>
 	<h2>Polls</h2>
 	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below.</p>
 	<a href="create.php" class="create-poll">Create Poll</a>
