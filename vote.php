@@ -38,11 +38,13 @@ if (isset($_GET['id'])) {
             $stmt = $pdo->prepare('SELECT account_id FROM poll_commit WHERE poll_id = ?');
             $stmt->execute([$_GET['id']]);
             $exists_voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            if (count($poll_answers) > 0) {
-                $_SESSION['msg'] = 'Kamu sudah vote pada polling "'. $poll['title'] .'"';
-                header('Location: index.php');
-                exit;
+            
+            for ($i = 0; $i < count($exists_voter); $i++) {
+                if ($exists_voter[$i]["account_id"] == $_SESSION["id"]) {
+                    $_SESSION['msg'] = 'Kamu sudah vote pada polling "'. $poll['title'] .'"';
+                    header('Location: index.php');
+                    exit;
+                }
             }
 
             // Update and increase the vote for the answer the user voted for
