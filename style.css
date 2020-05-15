@@ -3,14 +3,14 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Robot Slab', 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', 'Roboto', sans-serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 .navbar-brand {
-    font-family: 'Peace Sans';
+    font-family: 'Roboto Slab';
 }
 
 body {
