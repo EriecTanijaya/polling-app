@@ -31,9 +31,10 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </thead>
         <tbody>
+            <?php $num = 1; ?>
             <?php foreach ($polls as $poll): ?>
             <tr>
-                <td><?=$poll['id']?></td>
+                <td><?=$num?></td>
                 <td><?=$poll['title']?></td>
 				<td><?=$poll['answers']?></td>
                 <td class="actions">
@@ -41,6 +42,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <a href="delete.php?id=<?=$poll['id']?>" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
+            <?php $num++; ?>
             <?php endforeach;?>
         </tbody>
     </table>
