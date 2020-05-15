@@ -19,7 +19,7 @@ if (!isset($_POST['username'], $_POST['password'])) {
 }
 
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
-if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
+if ($stmt = $con->prepare('SELECT id, password, ip FROM accounts WHERE username = ?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
@@ -27,7 +27,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $password);
+        $stmt->bind_result($id, $password, $ip);
         $stmt->fetch();
         // Account exists, now we verify the password.
         // Note: remember to use password_hash in your registration file to store the hashed passwords.
@@ -40,6 +40,26 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $_SESSION['loggedin'] = true;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
+
+            // update the ip
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+                $current_ip = $_SERVER['HTTP_CLIENT_IP'];
+                //Is it a proxy address
+            } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+                $current_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            } else {
+                $current_ip = $_SERVER['REMOTE_ADDR'];
+            }
+
+            $_SESSION['ip'] = $current_ip;
+
+            // update ip in db
+            if ($current_ip != $ip) {
+                $stmt = $con->prepare('UPDATE accounts SET ip = ? WHERE id = ?');
+                $stmt->bind_param('si', $current_ip, $id);
+                $stmt->execute();
+            }
+
             header('Location: index.php');
         } else {
             $_SESSION['msg'] = "Incorrect password!";
