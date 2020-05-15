@@ -80,8 +80,6 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $stmt->execute();
             $stmt->store_result();
 
-            session_start();
-
             $_SESSION['loggedin'] = true;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = mysqli_insert_id($con);
