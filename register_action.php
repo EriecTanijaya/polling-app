@@ -31,7 +31,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
     // Store the result so we can check if the account exists in the database.
     if ($stmt->num_rows > 0) {
         // Username already exists
-        echo 'Username exists, please choose another!';
+        $_SESSION['msg'] = "Username exists, please choose another!";
+        header('Location: register.php');
     } else {
         // Insert new account
         // Email validation
@@ -41,23 +42,34 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 
         // Password length validation
         if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-            exit('Password must be between 5 and 20 characters long!');
+            $_SESSION['msg'] = "Password must be between 5 and 20 characters long!";
+            header('Location: register.php');
         }
 
         // Username doesnt exists, insert new account
-        if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
+        if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, npm, ip, prodi) VALUES (?, ?, ?, ?, ?, ?)')) {
             // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            // $password = $_POST['password'];
-            $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
-            $stmt->execute();
 
-            // echo 'You have successfully registered, you can now login!';
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+                $ip = $_SERVER['HTTP_CLIENT_IP'];
+                //Is it a proxy address
+            } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+
+            $stmt->bind_param('ssssss', $_POST['username'], $password, $_POST['email'], $_POST['npm'], $ip, $_POST['prodi']);
+            $stmt->execute();
+            $stmt->store_result();
+
             session_start();
-            session_regenerate_id();
+
             $_SESSION['loggedin'] = true;
             $_SESSION['name'] = $_POST['username'];
-            $_SESSION['id'] = mysqli_insert_id();
+            $_SESSION['id'] = mysqli_insert_id($con);
+            $_SESSION['ip'] = $ip;
             header('Location: index.php');
         } else {
             // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.

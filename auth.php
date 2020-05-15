@@ -42,7 +42,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $_SESSION['id'] = $id;
             header('Location: index.php');
         } else {
-            echo 'Incorrect password!';
+            $_SESSION['msg'] = "Incorrect password!";
+            header('Location: login.php');
         }
     } else {
         $_SESSION['msg'] = "There is no account with that username!";

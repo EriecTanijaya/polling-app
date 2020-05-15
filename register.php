@@ -5,6 +5,12 @@
         header('Location: index.php');
         exit;
     }
+
+    $msg = "";
+
+    if (isset($_SESSION['msg'])) {
+        $msg = $_SESSION['msg'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +26,20 @@
 <body>
     <div class="register">
         <h1>Register</h1>
+        <?php
+            if ($msg != "") {
+                echo '<div class="error-form"><i class="fas fa-exclamation-circle"></i> ' . $msg . '</div>';
+            }
+        ?>
         <form action="register_action.php" method="post" autocomplete="off">
+            <label for="npm">
+                <i class="fas fa-id-card"></i>
+            </label>
+            <input type="text" name="npm" placeholder="NPM" id="npm" required>
+            <label for="prodi">
+                <i class="fas fa-user-graduate"></i>
+            </label>
+            <input type="text" name="prodi" placeholder="Prodi" id="prodi" required>
             <label for="username">
                 <i class="fas fa-user"></i>
             </label>

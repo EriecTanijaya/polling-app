@@ -17,11 +17,11 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 // We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT password, email FROM accounts WHERE id = ?');
+$stmt = $con->prepare('SELECT password, email, npm, prodi FROM accounts WHERE id = ?');
 // In this case we can use the account ID to get the account info.
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($password, $email);
+$stmt->bind_result($password, $email, $npm, $prodi);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -34,6 +34,14 @@ $stmt->close();
 		<p>Your account details are below:</p>
 		<table>
 			<tr>
+				<td>NPM:</td>
+				<td><?=$npm?></td>
+			</tr>
+			<tr>
+				<td>Prodi:</td>
+				<td><?=$prodi?></td>
+			</tr>
+			<tr>
 				<td>Username:</td>
 				<td><?=$_SESSION['name']?></td>
 			</tr>
@@ -44,6 +52,10 @@ $stmt->close();
 			<tr>
 				<td>Email:</td>
 				<td><?=$email?></td>
+			</tr>
+			<tr>
+				<td>IP address:</td>
+				<td><?=$_SESSION['ip']?></td>
 			</tr>
 		</table>
 	</div>
