@@ -51,7 +51,14 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             // $password = $_POST['password'];
             $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
             $stmt->execute();
-            echo 'You have successfully registered, you can now login!';
+
+            // echo 'You have successfully registered, you can now login!';
+            session_start();
+            session_regenerate_id();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['name'] = $_POST['username'];
+            $_SESSION['id'] = mysqli_insert_id();
+            header('Location: index.php');
         } else {
             // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
             echo 'Could not prepare statement!';
