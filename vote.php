@@ -29,9 +29,18 @@ if (isset($_GET['id'])) {
             // Update and increase the vote for the answer the user voted for
             $stmt = $pdo->prepare('UPDATE poll_answers SET votes = votes + 1 WHERE id = ?');
             $stmt->execute([$_POST['poll_answer']]);
-            // Redirect user to the result page
-            header('Location: result.php?id=' . $_GET['id']);
-            exit;
+
+            // Update poll_commit table
+            if ($stmt = $pdo->prepare('INSERT INTO poll_commit (account_id, poll_id) VALUES (?, ?)')) {
+
+                $stmt->execute([$_SESSION['id'], $_GET['id']]);
+
+                // Redirect user to the result page
+                header('Location: result.php?id=' . $_GET['id']);
+                exit;
+            } else {
+                echo 'Could not prepare statement!';
+            }
         }
     } else {
         die('Poll with that ID does not exist.');
