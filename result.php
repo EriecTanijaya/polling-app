@@ -41,8 +41,12 @@ if (isset($_GET['id'])) {
 <?=template_header('Poll Results')?>
 
 <div class="content poll-result">
-	<h2><?=$poll['title']?></h2>
-	<p><?=$poll['desc']?></p>
+    <h2><?=$poll['title']?></h2>
+    <?php
+        if ($poll['desc'] != "") {
+            echo '<p>' . $poll['desc'] . '</p>';
+        }
+    ?>
     <div class="wrapper">
         <?php foreach ($poll_answers as $poll_answer): ?>
         <div class="poll-question">

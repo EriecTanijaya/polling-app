@@ -41,7 +41,7 @@ body {
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: #3274d6;
+    background-color: var(--nord9);
     color: #ffffff;
 }
 
@@ -57,7 +57,7 @@ body {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
-    background-color: #3274d6;
+    background-color: var(--nord9);
     border: 0;
     cursor: pointer;
     font-weight: bold;
@@ -66,12 +66,12 @@ body {
 }
 
 .login form input[type="submit"]:hover, .register form input[type="submit"]:hover {
-    background-color: #2868c7;
+    background-color: var(--nord10);
     transition: background-color 0.2s;
 }
 
 .navtop {
-    background-color: #3f69a8;
+    background-color: var(--nord10);
     height: 60px;
     width: 100%;
     border: 0;
@@ -95,7 +95,7 @@ body {
     padding: 0;
     margin: 0;
     color: #ecf0f6;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .navtop div a {
@@ -195,7 +195,7 @@ body.loggedin {
 }
 
 .home table tbody tr:hover {
-    background-color: #376ab7;
+    background-color: var(--nord10);
 }
 
 .home table tbody tr:hover td {

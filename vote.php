@@ -45,7 +45,11 @@ if (isset($_GET['id'])) {
 
 <div class="content poll-vote">
 	<h2><?=$poll['title']?></h2>
-	<p><?=$poll['desc']?></p>
+	<?php
+        if ($poll['desc'] != "") {
+            echo '<p>' . $poll['desc'] . '</p>';
+        }
+    ?>
     <form action="vote.php?id=<?=$_GET['id']?>" method="post">
         <?php for ($i = 0; $i < count($poll_answers); $i++): ?>
         <label>
