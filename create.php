@@ -20,6 +20,12 @@ if (!empty($_POST)) {
     $title = isset($_POST['title']) ? $_POST['title'] : '';
     $desc = isset($_POST['desc']) ? $_POST['desc'] : '';
 
+    if ($_SESSION['id'] != $_POST['creator_id']){
+        $_SESSION['msg'] = 'Invalid ID!';
+        header('Location: create.php');
+        exit;
+    }
+
     $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?, ?)');
     $stmt->execute([$title, $desc, $_POST['creator_id']]);
     
