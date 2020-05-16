@@ -43,20 +43,26 @@ if (!empty($_POST)) {
 
 <?=template_header('Create Poll')?>
     
-<div class="content update">
+<div class="container-fluid content">
     <?php if ($msg): ?>
         <p><?=$msg?></p>
     <?php endif;?>
 
 	<h2>Create Poll</h2>
     <form action="create.php" method="post">
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
-        <label for="desc">Description</label>
-        <input type="text" name="desc" id="desc">
-        <label for="answers">Answers (per line)</label>
-        <textarea name="answers" id="answers"></textarea>
-        <input type="submit" value="Create">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" id="title">
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <input type="text" class="form-control" name="desc" id="desc">
+        </div>
+        <div class="form-group">
+            <label for="answers">Answers (per line)</label>
+            <textarea name="answers" class="form-control" id="answers"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create">
     </form>
 </div>
 

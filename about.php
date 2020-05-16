@@ -12,7 +12,7 @@ if (!isset($_SESSION['loggedin'])) {
 <?=template_header('Poll Vote')?>
 
 <div class="container-fluid content poll-vote">
-	<h2>About this webssie</h2>
+    <h2><i class="fa fa-user-circle fa-lg" style="margin-right: 10px"></i>About this webssie</h2>
     <p>Website ini adalah tugas untuk mata kuliah Pemograman Web, dimana berguna untuk polling / voting sesuai
     dengan pertanyaan yang ada. Thanks to Pak Daniel yang membimbing agar terbuatnya website ini.</p>
     <p>Website ini powered up by Bootstrap, Color scheme pake Nord, dan thanks buat stackoverflow, W3School dkk.</p>

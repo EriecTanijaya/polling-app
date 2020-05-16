@@ -25,10 +25,10 @@ $stmt->fetch();
 $stmt->close();
 ?>
 
-<?=template_header('Polls')?>
+<?=template_header('Profile')?>
 
 <div class="container-fluid content">
-	<h2>Profile Page</h2>
+	<h2><i class="fa fa-user-circle fa-lg" style="margin-right: 10px;"></i>Profile Page</h2>
 	<div>
 		<p>Your account details are below:</p>
 		<table class="table table-bordered">

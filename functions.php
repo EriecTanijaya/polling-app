@@ -30,6 +30,7 @@ function template_header($title)
         </head>
         <body>
         <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+            <i class="fa fas fa-poll-h fa-2x" style="margin-right: 10px; color: #ffffff"></i>
             <a class="navbar-brand display-1 font-weight-bold" href="index.php">Voting 'n Polling</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -27,7 +27,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php if ($msg): ?>
         <div class="notif-warning"><p><i class="fas fa-exclamation-circle"></i> <?=$msg?></p></div>
     <?php endif;?>
-	<h2>Polls</h2>
+	<h2><i class="fa fa-poll-h fa-lg" style="margin-right: 10px;"></i>Polls</h2>
 	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below.</p>
     <?php
     if (isset($_SESSION['su'])) {
