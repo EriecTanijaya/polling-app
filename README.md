@@ -12,3 +12,5 @@ well yes but no
 - buat footer dan page about
 - buat juga link source code ke ini
 - buat pertanyaan minimal 5, kita baru 1
+- tambahin favicon
+- re structure file, asset sama asset dll

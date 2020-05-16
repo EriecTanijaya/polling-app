@@ -51,6 +51,12 @@ function template_header($title)
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="about.php">
+                            <i class="fa fas fa-info-circle"></i>
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="logout.php">
                             <i class="fa fa-sign-out-alt"></i>
                             Logout
