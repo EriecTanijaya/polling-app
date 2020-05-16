@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2020 at 09:35 AM
+-- Generation Time: May 16, 2020 at 07:30 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -42,8 +42,8 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `username`, `password`, `email`, `npm`, `ip`, `prodi`) VALUES
-(25, 'eriectan', '$2y$10$s9hrcnOwC60Ju8356WcsKuO4UWeRoLMtVP.DwPBsl.UI2E.ZItJO.', 'eriectan88@gmail.com', '1831100', '::1', 'Sistem Informasi'),
-(26, 'admin', '$2y$10$ced/R1Qq37BQHuW/XutTNelzxdZGW9jmLxZ0DAL0cn2FZvfit4J8q', 'admin@admin.com', '000000', '::1', 'admin');
+(27, 'eriectan', '$2y$10$841sZCP31P.Qkv.NosgISeQPKiHCsIG5S/fCHAq4YEj431IANNsnq', 'eriectan88@gmail.com', '1831100', '::1', 'Sistem Informasi'),
+(28, 'admin', '$2y$10$wne.8xmZguiniz1iO1HyKOTq46qwsnzcaQY19NREEqcvMkv8e6hla', 'admin@admin.com', '0000', '::1', 'Sistem Informasi');
 
 -- --------------------------------------------------------
 
@@ -54,15 +54,16 @@ INSERT INTO `accounts` (`id`, `username`, `password`, `email`, `npm`, `ip`, `pro
 CREATE TABLE `polls` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
-  `desc` text NOT NULL
+  `desc` text NOT NULL,
+  `creator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `polls`
 --
 
-INSERT INTO `polls` (`id`, `title`, `desc`) VALUES
-(3, 'Apakah kamu kangen kuliah normal seperti biasa?', 'Kuliah normal atau kuliah online');
+INSERT INTO `polls` (`id`, `title`, `desc`, `creator_id`) VALUES
+(4, 'Enakan mie rebus atau mie goreng?', 'Mau tau pada suka makan mie goreng atau mie rebus', 27);
 
 -- --------------------------------------------------------
 
@@ -82,9 +83,12 @@ CREATE TABLE `poll_answers` (
 --
 
 INSERT INTO `poll_answers` (`id`, `poll_id`, `title`, `votes`) VALUES
-(8, 3, 'kangen kuliah normal', 1),
+(8, 3, 'kangen kuliah normal', 0),
 (9, 3, 'udah pw kuliah online', 0),
-(10, 3, 'ha? apa itu kuliah?', 0);
+(10, 3, 'ha? apa itu kuliah?', 0),
+(11, 4, 'mie goyeng', 0),
+(12, 4, 'mie rebuss', 0),
+(13, 4, 'BOTH!', 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +107,7 @@ CREATE TABLE `poll_commit` (
 --
 
 INSERT INTO `poll_commit` (`id`, `account_id`, `poll_id`) VALUES
-(6, 25, 3);
+(7, 27, 4);
 
 --
 -- Indexes for dumped tables
@@ -143,25 +147,25 @@ ALTER TABLE `poll_commit`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `polls`
 --
 ALTER TABLE `polls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `poll_answers`
 --
 ALTER TABLE `poll_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `poll_commit`
 --
 ALTER TABLE `poll_commit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
