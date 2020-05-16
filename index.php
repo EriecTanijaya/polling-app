@@ -50,7 +50,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <tr>
                 <th scope="row"><?=$num?></td>
-                <td><?=$poll['title']?></td>
+                <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 600px"><?=$poll['title']?></td>
                 <td><?=$poll['answers']?></td>
                 <td><?=$creator_name?></td>
                 <td class="actions">

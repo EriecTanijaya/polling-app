@@ -32,6 +32,12 @@ if (!empty($_POST)) {
         header('Location: create.php');
         exit;
     }
+
+    if (count($answers) > 5) {
+        $_SESSION['msg'] = 'Max pilihan berganda adalah 5 pilihan';
+        header('Location: create.php');
+        exit;
+    }
     
     foreach ($answers as $answer) {
         // If the answer is empty there is no need to insert
@@ -66,7 +72,7 @@ if (!empty($_POST)) {
             <input type="text" class="form-control" name="desc" id="desc">
         </div>
         <div class="form-group">
-            <label for="answers">Answers (per line)</label>
+            <label for="answers">Answers (per line), Max 5 answers</label>
             <textarea name="answers" class="form-control" id="answers"></textarea>
         </div>
         <input type="submit" class="btn btn-primary" value="Create">
