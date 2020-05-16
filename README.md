@@ -21,12 +21,12 @@ A simple website to create poll
 - percantik readme ini, kasih tau pake apa aj, cara nya gmna git clone bla bla, sql ny jga
 
 ## How
-Clone this repo
-Import the phppoll.sql to the phpmyadmin
-Run project on localhost using [xampp](https://www.apachefriends.org/index.html) or thru your webserver
+- Clone this repo
+- Import the phppoll.sql to the phpmyadmin
+- Run project on localhost using [xampp](https://www.apachefriends.org/index.html) or thru your webserver
 
 ## Credit
-- [codeshack](htps://codeshack.io)
+- [codeshack](https://codeshack.io)
 - [favicon generator](https://gauger.io/fonticon/)
 - [bootstrap](https://getbootstrap.com/)
 - [w3schools](https://www.w3schools.com/)
