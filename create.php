@@ -75,7 +75,7 @@ if (!empty($_POST)) {
             <label for="answers">Answers (per line), Max 5 answers</label>
             <textarea name="answers" class="form-control" id="answers"></textarea>
         </div>
-        <input type="submit" class="btn btn-primary" value="Create">
+        <input type="submit" class="btn btn-success" value="Create">
     </form>
 </div>
 
