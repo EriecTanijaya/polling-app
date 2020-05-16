@@ -11,6 +11,11 @@ include 'functions.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
 
+if (isset($_SESSION['msg'])) {
+    $msg = $_SESSION['msg'];
+    $_SESSION['msg'] = '';
+}
+
 if (!empty($_POST)) {
     $title = isset($_POST['title']) ? $_POST['title'] : '';
     $desc = isset($_POST['desc']) ? $_POST['desc'] : '';
@@ -21,6 +26,13 @@ if (!empty($_POST)) {
     $poll_id = $pdo->lastInsertId();
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $answers = isset($_POST['answers']) ? explode(PHP_EOL, $_POST['answers']) : '';
+    
+    if ($answers[0] == '') {
+        $_SESSION['msg'] = 'Jawaban tidak boleh kosong';
+        header('Location: create.php');
+        exit;
+    }
+    
     foreach ($answers as $answer) {
         // If the answer is empty there is no need to insert
         if (empty($answer)) {
