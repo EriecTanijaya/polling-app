@@ -16,6 +16,8 @@
 body {
     background-color: var(--nord4);
     margin: 0;
+    position: relative;
+    min-height: 100vh;
 }
 
 .login, .register {
@@ -186,6 +188,7 @@ body.loggedin {
 }
 
 .content {
+    padding-bottom: 2.5rem;
     width: 100%;
     margin: 0 auto;
 }
@@ -478,12 +481,11 @@ body.loggedin {
 }
 
 .footer {
-    position: fixed;
-    left: 0;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: var(--nord1);
     color: white;
     text-align: center;
-    height: 35px;
+    height: 2.5rem;
   }
