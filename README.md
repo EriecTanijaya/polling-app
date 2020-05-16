@@ -1,5 +1,5 @@
 # polling-app
-well yes but no
+A simple website to create poll
 
 ## TODO
 - ~~make responsive~~
@@ -20,9 +20,14 @@ well yes but no
 - ~~buat option value jurusan jurusan prodi~~
 - percantik readme ini, kasih tau pake apa aj, cara nya gmna git clone bla bla, sql ny jga
 
+## How
+Clone this repo
+Import the phppoll.sql to the phpmyadmin
+Run project on localhost using [xampp](https://www.apachefriends.org/index.html) or thru your webserver
+
 ## Credit
-- [codeshack](codeshack.io)
+- [codeshack](htps://codeshack.io)
 - [favicon generator](https://gauger.io/fonticon/)
-- [bootstrap](web getbootstrap)
-- [w3school](web url)
-- [stackoverflow](web url jga)
+- [bootstrap](https://getbootstrap.com/)
+- [w3schools](https://www.w3schools.com/)
+- [stackoverflow](https://stackoverflow.com/)
