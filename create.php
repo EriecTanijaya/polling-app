@@ -7,12 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-if (!isset($_SESSION['su'])) {
-    $_SESSION['msg'] = "You don't have permission for that action";
-    header('Location: index.php');
-    exit;
-}
-
 include 'functions.php';
 $pdo = pdo_connect_mysql();
 $msg = '';

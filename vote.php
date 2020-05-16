@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
     $creator = $stmt->fetch(PDO::FETCH_ASSOC);
     $creator_name = $creator['username'];
     ?>
-    <p><?=$creator_name?></p>
+    <p>Poll created by <?=$creator_name?></p>
 	<?php
         if ($poll['desc'] != "") {
             echo '<p>' . $poll['desc'] . '</p>';

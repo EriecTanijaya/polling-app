@@ -23,6 +23,12 @@ $stmt->execute();
 $stmt->bind_result($password, $email, $npm, $prodi);
 $stmt->fetch();
 $stmt->close();
+
+$stmt = $con->prepare('SELECT id FROM polls WHERE creator_id = ?');
+$stmt->bind_param('i', $_SESSION['id']);
+$stmt->execute();
+$stmt->store_result();
+$poll_count = $stmt->num_rows;
 ?>
 
 <?=template_header('Profile')?>
@@ -51,6 +57,10 @@ $stmt->close();
 			<tr>
 				<td scope="col">IP address:</td>
 				<td><?=$_SESSION['ip']?></td>
+			</tr>
+			<tr>
+				<td scope="col">Poll created:</td>
+				<td><?=$poll_count?></td>
 			</tr>
 		</table>
 	</div>

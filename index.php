@@ -28,7 +28,8 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="notif-warning"><p><i class="fas fa-exclamation-circle"></i> <?=$msg?></p></div>
     <?php endif;?>
 	<h2><i class="fa fa-poll-h fa-lg" style="margin-right: 10px;"></i>Polls</h2>
-	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below. You also can create your own poll!</p>
+    <p>Hi <?=$_SESSION['name']?>, you can view the list of polls below. You also can create your own poll!</p>
+    <a href="create.php" class="create-poll">Create Poll</a>
 	<table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
