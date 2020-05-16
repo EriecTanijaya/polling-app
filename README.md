@@ -18,3 +18,11 @@ well yes but no
 - buat setiap orang bisa buat pollin sndiri, edit db buat isi kolom poll_creator
   nanti cek pas mau delete, kalau bukan creator jangan kasih, pas di index.php tampilin icon delete hanya untuk pembuat polling
 - buat option value jurusan jurusan prodi
+- percantik readme ini, kasih tau pake apa aj, cara nya gmna git clone bla bla, sql ny jga
+
+## Credit
+- [codeshack](codeshack.io)
+- [favicon generator](https://gauger.io/fonticon/)
+- [bootstrap](web getbootstrap)
+- [w3school](web url)
+- [stackoverflow](web url jga)

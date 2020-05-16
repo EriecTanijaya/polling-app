@@ -2,12 +2,6 @@
 
 session_start();
 
-if (!isset($_SESSION['su'])) {
-    $_SESSION['msg'] = "You don't have permission for that action";
-    header('Location: index.php');
-    exit;
-}
-
 include 'functions.php';
 $pdo = pdo_connect_mysql();
 $msg = '';
@@ -19,6 +13,13 @@ if (isset($_GET['id'])) {
     if (!$poll) {
         die('Poll doesn\'t exist with that ID!');
     }
+
+    if ($_SESSION['id'] != $poll['creator_id']) {
+        $_SESSION['msg'] = "You're not the creator of this poll!";
+        header('Location: index.php');
+        exit;
+    }
+
     // Make sure the user confirms before deletion
     if (isset($_GET['confirm'])) {
         if ($_GET['confirm'] == 'yes') {

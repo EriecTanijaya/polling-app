@@ -21,8 +21,8 @@ if (!empty($_POST)) {
     $title = isset($_POST['title']) ? $_POST['title'] : '';
     $desc = isset($_POST['desc']) ? $_POST['desc'] : '';
 
-    $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?)');
-    $stmt->execute([$title, $desc]);
+    $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?, ?)');
+    $stmt->execute([$title, $desc, $_POST['creator_id']]);
     
     $poll_id = $pdo->lastInsertId();
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
@@ -50,6 +50,7 @@ if (!empty($_POST)) {
 
 	<h2>Create Poll</h2>
     <form action="create.php" method="post">
+        <input type="hidden" name="creator_id" id="creator_id" value="<?=$_SESSION['id']?>">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" id="title">

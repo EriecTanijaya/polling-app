@@ -28,32 +28,34 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="notif-warning"><p><i class="fas fa-exclamation-circle"></i> <?=$msg?></p></div>
     <?php endif;?>
 	<h2><i class="fa fa-poll-h fa-lg" style="margin-right: 10px;"></i>Polls</h2>
-	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below.</p>
-    <?php
-    if (isset($_SESSION['su'])) {
-        echo '<a href="create.php" class="create-poll">Create Poll</a>';
-    }
-    ?>
+	<p>Hi <?=$_SESSION['name']?>, you can view the list of polls below. You also can create your own poll!</p>
 	<table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <td scope="col">#</td>
                 <td scope="col">Title</td>
-				<td scope="col">Answers</td>
+                <td scope="col">Answers</td>
+                <td scope="col">Creator</td>
                 <td scope="col">Action</td>
             </tr>
         </thead>
         <tbody>
             <?php $num = 1; ?>
             <?php foreach ($polls as $poll): ?>
+            <?php 
+            $stmt = $pdo->query('SELECT username FROM accounts WHERE id = ' . $poll['creator_id']);
+            $creator = $stmt->fetch(PDO::FETCH_ASSOC);
+            $creator_name = $creator['username'];
+            ?>
             <tr>
                 <th scope="row"><?=$num?></td>
                 <td><?=$poll['title']?></td>
-				<td><?=$poll['answers']?></td>
+                <td><?=$poll['answers']?></td>
+                <td><?=$creator_name?></td>
                 <td class="actions">
                     <a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
                     <?php
-                    if (isset($_SESSION['su'])) {
+                    if ($_SESSION['id'] == $poll['creator_id']) {
                         echo '<a href="delete.php?id=' . $poll['id'] . '" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>';
                     }
                     ?>

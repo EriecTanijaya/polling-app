@@ -20,13 +20,15 @@
     <meta charset="utf-8">
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico" />
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 </head>
 
 <body>
     <div class="register">
-        <h1>Register</h1>
+        <h1><i class="fab fa-wpforms fa-sm" style="margin-right: 10px"></i>Register</h1>
         <?php
             if ($msg != "") {
                 echo '<div class="error-form"><i class="fas fa-exclamation-circle"></i> ' . $msg . '</div>';
@@ -37,10 +39,24 @@
                 <i class="fas fa-id-card"></i>
             </label>
             <input type="text" name="npm" placeholder="NPM" id="npm" required>
+
+
             <label for="prodi">
                 <i class="fas fa-user-graduate"></i>
             </label>
-            <input type="text" name="prodi" placeholder="Prodi" id="prodi" required>
+            <select name="prodi" required>
+                <option value="Sistem Informasi">Sistem Informasi</option>
+                <option value="Manajemen">Manajemen</option>
+                <option value="Akuntansi">Ankuntansi</option>
+                <option value="Pariwisata">Pariwisata</option>
+                <option value="Ilmu Hukum">Ilmu Hukum</option>
+                <option value="Teknik Elektro">Teknik Elektro</option>
+                <option value="Teknologi Informasi">Teknologi Informasi</option>
+                <option value="Teknik Sipil">Teknik Sipil</option>
+                <option value="Arsitektur">Arsitektur</option>
+                <option value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
+            </select>
+
             <label for="username">
                 <i class="fas fa-user"></i>
             </label>

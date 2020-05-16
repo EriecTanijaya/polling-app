@@ -21,13 +21,15 @@
     <meta charset="utf-8">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico" />
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 </head>
 
 <body>
     <div class="login">
-        <h1>Login</h1>
+        <h1><i class="fas fa-sign-in-alt fa-sm" style="margin-right: 10px"></i>Login</h1>
         <?php
             if ($msg != "") {
                 echo '<div class="error-form"><i class="fas fa-exclamation-circle"></i> ' . $msg . '</div>';
