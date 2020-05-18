@@ -28,12 +28,7 @@ if (!empty($_POST)) {
 
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $answers = isset($_POST['answers']) ? explode(PHP_EOL, $_POST['answers']) : '';
-    
-    if ($answers[0] == '') {
-        $_SESSION['msg'] = 'Jawaban tidak boleh kosong';
-        header('Location: create.php');
-        exit;
-    }
+
 
     if (count($answers) < 2) {
         $_SESSION['msg'] = 'Masukkan setidaknya 2 pilihan jawaban';
@@ -78,7 +73,7 @@ if (!empty($_POST)) {
         <input type="hidden" name="creator_id" id="creator_id" value="<?=$_SESSION['id']?>">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" id="title">
+            <input type="text" class="form-control" name="title" id="title" required>
         </div>
         <div class="form-group">
             <label for="desc">Description</label>
@@ -86,7 +81,7 @@ if (!empty($_POST)) {
         </div>
         <div class="form-group">
             <label for="answers">Answers (per line), Max 5 answers</label>
-            <textarea name="answers" class="form-control" id="answers"></textarea>
+            <textarea name="answers" class="form-control" id="answers" required></textarea>
         </div>
         <input type="submit" class="btn btn-success" value="Create">
     </form>

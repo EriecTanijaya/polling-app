@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
 
 <?=template_header('Delete')?>
 
-<div class="content delete">
+<div class="container-fluid content delete">
 	<h2>Delete Poll #<?=$poll['id']?></h2>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
