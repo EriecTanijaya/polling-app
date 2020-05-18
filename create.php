@@ -39,6 +39,12 @@ if (!empty($_POST)) {
         exit;
     }
 
+    if (count($answers) < 2) {
+        $_SESSION['msg'] = 'Masukkan setidaknya 2 pilihan jawaban';
+        header('Location: create.php');
+        exit;
+    }
+
     if (count($answers) > 5) {
         $_SESSION['msg'] = 'Max pilihan berganda adalah 5 pilihan';
         header('Location: create.php');
