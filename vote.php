@@ -46,7 +46,6 @@ if (isset($_GET['id'])) {
 
         // If the user clicked the "Vote" button...
         if (isset($_POST['poll_answer'])) {
-            
             // check if user already vote
             $stmt = $pdo->prepare('SELECT account_id FROM poll_commit WHERE poll_id = ?');
             $stmt->execute([$_GET['id']]);
@@ -102,7 +101,7 @@ if (isset($_GET['id'])) {
     <form action="vote.php?id=<?=$_GET['id']?>" method="post">
         <?php for ($i = 0; $i < count($poll_answers); $i++): ?>
         <label>
-            <input type="radio" name="poll_answer" value="<?=$poll_answers[$i]['id']?>"<?=$i == 0 ? ' checked' : ''?>>
+            <input type="radio" name="poll_answer" value="<?=$poll_answers[$i]['id']?>" checked>
             <?=$poll_answers[$i]['title']?>
         </label>
         <?php endfor;?>
