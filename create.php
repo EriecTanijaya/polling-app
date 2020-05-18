@@ -26,10 +26,6 @@ if (!empty($_POST)) {
         exit;
     }
 
-    $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?, ?)');
-    $stmt->execute([$title, $desc, $_POST['creator_id']]);
-    
-    $poll_id = $pdo->lastInsertId();
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $answers = isset($_POST['answers']) ? explode(PHP_EOL, $_POST['answers']) : '';
     
@@ -50,6 +46,11 @@ if (!empty($_POST)) {
         header('Location: create.php');
         exit;
     }
+
+    $stmt = $pdo->prepare('INSERT INTO polls VALUES (NULL, ?, ?, ?)');
+    $stmt->execute([$title, $desc, $_POST['creator_id']]);
+    
+    $poll_id = $pdo->lastInsertId();
     
     foreach ($answers as $answer) {
         // If the answer is empty there is no need to insert
