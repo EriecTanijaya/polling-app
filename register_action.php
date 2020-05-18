@@ -60,6 +60,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
         if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
             $_SESSION['msg'] = "Password must be between 5 and 20 characters long!";
             header('Location: register.php');
+            exit;
         }
 
         // Username doesnt exists, insert new account
