@@ -55,11 +55,17 @@ if (isset($_GET['id'])) {
     ?>
     <div class="wrapper">
         <?php foreach ($poll_answers as $poll_answer): ?>
+        <?php
+        $vote_value = 0;
+        if ($total_votes != 0) {
+            $vote_value = @round(($poll_answer['votes'] / $total_votes) * 100);
+        }
+        ?>
         <div class="poll-question">
             <p><?=$poll_answer['title']?> <span>(<?=$poll_answer['votes']?> Votes)</span></p>
             <div class="progress" style="height: 20px;">
-                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style= "width:<?=@round(($poll_answer['votes'] / $total_votes) * 100)?>%">
-                    <?=@round(($poll_answer['votes'] / $total_votes) * 100)?>%
+                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style= "width:<?=$vote_value?>%">
+                    <?=$vote_value?>%
                 </div>
             </div>
         </div>
