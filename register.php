@@ -35,6 +35,11 @@
             }
         ?>
         <form action="register_action.php" method="post" autocomplete="off">
+            <label for="name">
+                <i class="fas fa-user-alt"></i>
+            </label>
+            <input type="text" name="name" placeholder="Nama Lengkap" id="name" required>
+
             <label for="npm">
                 <i class="fas fa-id-card"></i>
             </label>

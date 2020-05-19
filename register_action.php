@@ -64,7 +64,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
         }
 
         // Username doesnt exists, insert new account
-        if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, npm, ip, prodi) VALUES (?, ?, ?, ?, ?, ?)')) {
+        if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, npm, ip, prodi, name) VALUES (?, ?, ?, ?, ?, ?, ?)')) {
             // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
@@ -77,12 +77,12 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
                 $ip = $_SERVER['REMOTE_ADDR'];
             }
 
-            $stmt->bind_param('ssssss', $_POST['username'], $password, $_POST['email'], $_POST['npm'], $ip, $_POST['prodi']);
+            $stmt->bind_param('sssssss', $_POST['username'], $password, $_POST['email'], $_POST['npm'], $ip, $_POST['prodi'], $_POST['name']);
             $stmt->execute();
             $stmt->store_result();
 
             $_SESSION['loggedin'] = true;
-            $_SESSION['name'] = $_POST['username'];
+            $_SESSION['name'] = $_POST['name'];
             $_SESSION['id'] = mysqli_insert_id($con);
             $_SESSION['ip'] = $ip;
             header('Location: index.php');

@@ -15,12 +15,12 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-$stmt = $con->prepare('SELECT password, email, npm, prodi FROM accounts WHERE id = ?');
+$stmt = $con->prepare('SELECT username, password, email, npm, prodi FROM accounts WHERE id = ?');
 
 // pake id nya
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($password, $email, $npm, $prodi);
+$stmt->bind_result($username, $password, $email, $npm, $prodi);
 $stmt->fetch();
 $stmt->close();
 
@@ -39,6 +39,10 @@ $poll_count = $stmt->num_rows;
 		<p>Your account details are below:</p>
 		<table class="table table-bordered">
 			<tr>
+				<td scope="col">Nama Lengkap:</td>
+				<td><?=$_SESSION['name']?></td>
+			</tr>
+			<tr>
 				<td scope="col">NPM:</td>
 				<td><?=$npm?></td>
 			</tr>
@@ -48,7 +52,7 @@ $poll_count = $stmt->num_rows;
 			</tr>
 			<tr>
 				<td scope="col">Username:</td>
-				<td><?=$_SESSION['name']?></td>
+				<td><?=$username?></td>
 			</tr>
 			<tr>
 				<td scope="col">Email:</td>
