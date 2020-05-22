@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2020 at 07:30 AM
+-- Generation Time: May 22, 2020 at 02:18 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -34,16 +34,17 @@ CREATE TABLE `accounts` (
   `email` varchar(100) NOT NULL,
   `npm` varchar(255) NOT NULL,
   `ip` varchar(255) NOT NULL,
-  `prodi` varchar(255) NOT NULL
+  `prodi` varchar(255) NOT NULL,
+  `name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `username`, `password`, `email`, `npm`, `ip`, `prodi`) VALUES
-(27, 'eriectan', '$2y$10$841sZCP31P.Qkv.NosgISeQPKiHCsIG5S/fCHAq4YEj431IANNsnq', 'eriectan88@gmail.com', '1831100', '::1', 'Sistem Informasi'),
-(28, 'admin', '$2y$10$wne.8xmZguiniz1iO1HyKOTq46qwsnzcaQY19NREEqcvMkv8e6hla', 'admin@admin.com', '0000', '::1', 'Sistem Informasi');
+INSERT INTO `accounts` (`id`, `username`, `password`, `email`, `npm`, `ip`, `prodi`, `name`) VALUES
+(27, 'eriectan', '$2y$10$841sZCP31P.Qkv.NosgISeQPKiHCsIG5S/fCHAq4YEj431IANNsnq', 'eriectan88@gmail.com', '1831100', '::1', 'Sistem Informasi', 'eriectan'),
+(28, 'admin', '$2y$10$wne.8xmZguiniz1iO1HyKOTq46qwsnzcaQY19NREEqcvMkv8e6hla', 'admin@admin.com', '0000', '::1', 'Sistem Informasi', 'admin');
 
 -- --------------------------------------------------------
 
@@ -83,9 +84,6 @@ CREATE TABLE `poll_answers` (
 --
 
 INSERT INTO `poll_answers` (`id`, `poll_id`, `title`, `votes`) VALUES
-(8, 3, 'kangen kuliah normal', 0),
-(9, 3, 'udah pw kuliah online', 0),
-(10, 3, 'ha? apa itu kuliah?', 0),
 (11, 4, 'mie goyeng', 0),
 (12, 4, 'mie rebuss', 0),
 (13, 4, 'BOTH!', 1);
@@ -153,19 +151,19 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `polls`
 --
 ALTER TABLE `polls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `poll_answers`
 --
 ALTER TABLE `poll_answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `poll_commit`
 --
 ALTER TABLE `poll_commit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
