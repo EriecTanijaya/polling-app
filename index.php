@@ -50,8 +50,8 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <tr>
                 <th scope="row"><?=$num?></td>
-                <td style="word-break: break-all;"><?=$poll['title']?></td>
-                <td style="word-break: break-all;"><?=$poll['answers']?></td>
+                <td><?=$poll['title']?></td>
+                <td><?=$poll['answers']?></td>
                 <td><?=$creator_name?></td>
                 <td class="actions">
                     <a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
