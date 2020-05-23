@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 ?>
 
-<?=template_header('Poll Vote')?>
+<?=template_header('About')?>
 
 <div class="container-fluid content poll-vote">
     <h2><i class="fa fa-user-circle fa-lg" style="margin-right: 10px"></i>About this webssie</h2>

@@ -29,14 +29,20 @@ if (!empty($_POST)) {
     // Get the answers and convert the multiline string to an array, so we can add each answer to the "poll_answers" table
     $answers = isset($_POST['answers']) ? explode(PHP_EOL, $_POST['answers']) : '';
 
+    $filled_answer = 0;
+    foreach ($answers as $answer) {
+        if (strlen(trim($answer)) > 0) {
+            $filled_answer++;
+        }
+    }
 
-    if (count($answers) < 2) {
+    if ($filled_answer < 2) {
         $_SESSION['msg'] = 'Masukkan setidaknya 2 pilihan jawaban';
         header('Location: create.php');
         exit;
     }
 
-    if (count($answers) > 5) {
+    if ($filled_answer > 5) {
         $_SESSION['msg'] = 'Max pilihan berganda adalah 5 pilihan';
         header('Location: create.php');
         exit;
@@ -49,7 +55,7 @@ if (!empty($_POST)) {
     
     foreach ($answers as $answer) {
         // If the answer is empty there is no need to insert
-        if (empty($answer)) {
+        if (strlen(trim($answer)) <= 0 || empty($answer)) {
             continue;
         }
 
