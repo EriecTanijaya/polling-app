@@ -13,6 +13,7 @@ if (mysqli_connect_errno()) {
 if (!isset($_POST['username'], $_POST['password'])) {
     $_SESSION['msg'] = "Please fill both the username and password fields!";
     header('Location: login.php');
+    exit;
 }
 
 // To prevent sql injection
@@ -55,11 +56,6 @@ if ($stmt = $con->prepare('SELECT id, password, ip, name FROM accounts WHERE use
                 $stmt = $con->prepare('UPDATE accounts SET ip = ? WHERE id = ?');
                 $stmt->bind_param('si', $current_ip, $id);
                 $stmt->execute();
-            }
-
-            // dev
-            if ($_SESSION['name'] == "admin") { //ganti ke eriectan nanti
-                $_SESSION['su'] = true;
             }
 
             header('Location: index.php');
