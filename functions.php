@@ -44,8 +44,16 @@ function template_header($title)
                             <i class="fa fas fa-poll-h"></i>
                             Polls
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li>';
+    if ($_SESSION['name'] == 'admin') {
+        echo '<li class="nav-item">
+                <a class="nav-link" href="report.php">
+                    <i class="fa fas fa-file-alt"></i>
+                    Report
+                </a>
+            </li>';
+    }
+    echo '<li class="nav-item">
                         <a class="nav-link" href="profile.php">
                             <i class="fa fa-user-circle"></i>
                             Profile
