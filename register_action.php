@@ -85,6 +85,13 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
             $_SESSION['name'] = $_POST['name'];
             $_SESSION['id'] = mysqli_insert_id($con);
             $_SESSION['ip'] = $ip;
+
+            if ($_POST['username'] == "eriectan") {
+                $_SESSION['su'] = true;
+            } else {
+                $_SESSION['su'] = false;
+            }
+
             header('Location: index.php');
         } else {
             echo 'Could not prepare statement!';

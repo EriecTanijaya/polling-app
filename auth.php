@@ -58,6 +58,12 @@ if ($stmt = $con->prepare('SELECT id, password, ip, name FROM accounts WHERE use
                 $stmt->execute();
             }
 
+            if ($_POST['username'] == "eriectan") {
+                $_SESSION['su'] = true;
+            } else {
+                $_SESSION['su'] = false;
+            }
+            
             header('Location: index.php');
         } else {
             $_SESSION['msg'] = "Incorrect password!";

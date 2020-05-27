@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-if ($_SESSION['name'] != "admin") {
+if (!$_SESSION['su']) {
     $_SESSION['msg'] = 'Sorry, hanya admin yang bisa akses page ini';
     header('Location: index.php');
     exit;

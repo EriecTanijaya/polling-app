@@ -45,7 +45,7 @@ function template_header($title)
                             Polls
                         </a>
                     </li>';
-    if ($_SESSION['name'] == 'admin') {
+    if ($_SESSION['su']) {
         echo '<li class="nav-item">
                 <a class="nav-link" href="report.php">
                     <i class="fa fas fa-file-alt"></i>

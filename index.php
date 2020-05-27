@@ -56,7 +56,7 @@ $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td class="actions">
                     <a href="vote.php?id=<?=$poll['id']?>" class="view" title="View Poll"><i class="fas fa-eye fa-xs"></i></a>
                     <?php
-                    if ($_SESSION['id'] == $poll['creator_id']) {
+                    if ($_SESSION['id'] == $poll['creator_id'] || $_SESSION['su']) {
                         echo '<a href="delete.php?id=' . $poll['id'] . '" class="trash" title="Delete Poll"><i class="fas fa-trash fa-xs"></i></a>';
                     }
                     ?>
