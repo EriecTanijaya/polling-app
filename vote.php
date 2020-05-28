@@ -88,16 +88,16 @@ if (isset($_GET['id'])) {
 <div class="container-fluid content poll-vote">
     <h2><?=$poll['title']?></h2>
     <?php
+        if ($poll['desc'] != "") {
+            echo '<p>' . $poll['desc'] . '</p>';
+        }
+    ?>
+    <?php
     $stmt = $pdo->query('SELECT username FROM accounts WHERE id = ' . $poll['creator_id']);
     $creator = $stmt->fetch(PDO::FETCH_ASSOC);
     $creator_name = $creator['username'];
     ?>
     <p>Poll created by <?=$creator_name?></p>
-	<?php
-        if ($poll['desc'] != "") {
-            echo '<p>' . $poll['desc'] . '</p>';
-        }
-    ?>
     <form action="vote.php?id=<?=$_GET['id']?>" method="post">
         <?php for ($i = 0; $i < count($poll_answers); $i++): ?>
         <label>
