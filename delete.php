@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
         die('Poll doesn\'t exist with that ID!');
     }
 
-    if ($_SESSION['id'] != $poll['creator_id']) {
+    if ($_SESSION['id'] != $poll['creator_id'] || !$_SESSION['su']) {
         $_SESSION['msg'] = "You're not the creator of this poll!";
         header('Location: index.php');
         exit;

@@ -255,7 +255,7 @@ body.loggedin {
 .home table thead td {
     padding: 10px;
     font-weight: bold;
-    color: #767779;
+    color: #454545;
     font-size: 14px;
 }
 
@@ -285,7 +285,7 @@ body.loggedin {
 }
 
 .home table tbody tr td:nth-child(1) {
-    color: #a5a7a9;
+    color: #454545;
 }
 
 .home table tbody tr td.actions {
