@@ -49,16 +49,13 @@
                 <i class="fas fa-user-graduate"></i>
             </label>
             <select name="prodi" required>
-                <option value="Sistem Informasi">Sistem Informasi</option>
-                <option value="Manajemen">Manajemen</option>
-                <option value="Akuntansi">Ankuntansi</option>
-                <option value="Pariwisata">Pariwisata</option>
-                <option value="Ilmu Hukum">Ilmu Hukum</option>
-                <option value="Teknik Elektro">Teknik Elektro</option>
-                <option value="Teknologi Informasi">Teknologi Informasi</option>
-                <option value="Teknik Sipil">Teknik Sipil</option>
-                <option value="Arsitektur">Arsitektur</option>
-                <option value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
+                <option value="">Pilih Prodinyaa</option>
+                <?php
+                    $options = array('Sistem Informasi', 'Manajemen', 'Pariwisata', 'Ilmu Hukum', 'Teknik Elektro', 'Teknologi Informasi', 'Teknik Sipil', 'Arsitektur', 'Pendidikan Bahasa Inggris');
+                    foreach($options as $option) {
+                        echo '<option value="'. $option .'">'. $option .'</option>';
+                    }
+                ?>
             </select>
 
             <label for="username">

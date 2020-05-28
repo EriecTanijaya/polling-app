@@ -16,6 +16,11 @@ if (isset($_SESSION['msg'])) {
     $_SESSION['msg'] = '';
 }
 
+// Get exists data
+$stmt = $pdo->prepare('SELECT name, npm, prodi, username, email FROM accounts WHERE id = ?');
+$stmt->execute([$_GET['id']]);
+$user = $stmt->fetch();
+
 if (!empty($_POST)) {
 
 }
@@ -35,34 +40,30 @@ if (!empty($_POST)) {
             <input type="hidden" name="user_id" id="user_id" value="<?=$_SESSION['id']?>">
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" class="form-control" name="name" id="name" required>
+                <input type="text" class="form-control" name="name" id="name" value="<?=$user['name']?>" required>
             </div>
             <div class="form-group">
                 <label for="npm">NPM</label>
-                <input type="text" class="form-control" name="npm" id="npm" required>
+                <input type="text" class="form-control" name="npm" id="npm" value="<?=$user['npm']?>" required>
             </div>
             <div class="form-group">
                 <label for="prodi">Prodi</label>
                 <select class="form-control" name="prodi" required>
-                    <option value="Sistem Informasi">Sistem Informasi</option>
-                    <option value="Manajemen">Manajemen</option>
-                    <option value="Akuntansi">Ankuntansi</option>
-                    <option value="Pariwisata">Pariwisata</option>
-                    <option value="Ilmu Hukum">Ilmu Hukum</option>
-                    <option value="Teknik Elektro">Teknik Elektro</option>
-                    <option value="Teknologi Informasi">Teknologi Informasi</option>
-                    <option value="Teknik Sipil">Teknik Sipil</option>
-                    <option value="Arsitektur">Arsitektur</option>
-                    <option value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
+                    <?php
+                        $options = array('Sistem Informasi', 'Manajemen', 'Pariwisata', 'Ilmu Hukum', 'Teknik Elektro', 'Teknologi Informasi', 'Teknik Sipil', 'Arsitektur', 'Pendidikan Bahasa Inggris');
+                        foreach($options as $option) {
+                            echo '<option value="'. $option .'"'. ($option == $user['prodi'] ? 'selected' : '') .'>'. $option .'</option>';
+                        }
+                    ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" id="username" required>
+                <input type="text" class="form-control" name="username" id="username" value="<?=$user['username']?>" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" required>
+                <input type="email" class="form-control" name="email" id="email" value="<?=$user['email']?>" required>
             </div>
             <input type="submit" class="btn btn-success" value="Update">
         </form>
