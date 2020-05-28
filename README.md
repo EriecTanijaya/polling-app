@@ -18,7 +18,7 @@ A simple website to create poll
 - ~~buat setiap orang bisa buat pollin sndiri, edit db buat isi kolom poll_creator
   nanti cek pas mau delete, kalau bukan creator jangan kasih, pas di index.php tampilin icon delete hanya untuk pembuat polling~~
 - ~~buat option value jurusan jurusan prodi~~
-- buat bisa edit profile, edit poll
+- buat bisa edit profile, edit poll(not yet)
 - admin buatin bisa liat semua stats
 
 ## How
