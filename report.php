@@ -51,12 +51,13 @@ if (isset($_SESSION['msg'])) {
 
         if ($stmt) {
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
             if (count($users) == 0) {
                 $_SESSION['msg'] = 'Data tidak ditemukan';
                 header('Location: report.php');
                 exit;
             } else {
+                echo '<p>Ditemukan '. count($users) . ' hasil pencarian</p>';
+
                 echo '<table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
