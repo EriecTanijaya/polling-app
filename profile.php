@@ -5,6 +5,12 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$msg = '';
+if (isset($_SESSION['msg'])) {
+    $msg = $_SESSION['msg'];
+    $_SESSION['msg'] = '';
+}
+
 include 'functions.php';
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
@@ -15,12 +21,12 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-$stmt = $con->prepare('SELECT username, password, email, npm, prodi FROM accounts WHERE id = ?');
+$stmt = $con->prepare('SELECT name, username, password, email, npm, prodi FROM accounts WHERE id = ?');
 
 // pake id nya
 $stmt->bind_param('i', $_SESSION['id']);
 $stmt->execute();
-$stmt->bind_result($username, $password, $email, $npm, $prodi);
+$stmt->bind_result($name, $username, $password, $email, $npm, $prodi);
 $stmt->fetch();
 $stmt->close();
 
@@ -35,12 +41,17 @@ $poll_count = $stmt->num_rows;
 
 <div class="container-fluid content">
 	<h2><i class="fa fa-user-circle fa-lg" style="margin-right: 10px;"></i>Profile Page</h2>
+	<?php
+	if ($msg != '') {
+		echo '<p>'. $msg .'</p>';
+	}
+	?>
 	<div>
 		<p>Your account details are below:</p>
 		<table class="table table-bordered">
 			<tr>
 				<td scope="col">Nama Lengkap:</td>
-				<td><?=$_SESSION['name']?></td>
+				<td><?=$name?></td>
 			</tr>
 			<tr>
 				<td scope="col">NPM:</td>

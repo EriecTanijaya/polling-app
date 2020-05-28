@@ -23,8 +23,22 @@ $user = $stmt->fetch();
 
 if (!empty($_POST)) {
 
-}
+    if ($_SESSION['id'] != $_GET['id']){
+        $_SESSION['msg'] = 'Invalid ID!';
+        header('Location: edit_profile.php');
+        exit;
+    }
 
+    $stmt = $pdo->prepare('UPDATE accounts SET name = ?, npm = ?, prodi = ?, username = ?, email = ? WHERE id = ?');
+    if ($stmt->execute([$_POST['name'], $_POST['npm'], $_POST['prodi'], $_POST['username'], $_POST['email'], $_GET['id']])) {
+        $_SESSION['msg'] = 'Profile update successfully!';
+        header('Location: profile.php');
+        exit;
+    } else {
+        exit('Samting wen wrong sar');
+    }
+
+}
 ?>
 
 <?=template_header('Edit Profile')?>
@@ -36,8 +50,7 @@ if (!empty($_POST)) {
 
     <h2><i class="fa fa-user-edit fa-lg" style="margin-right: 10px;"></i>Edit Profile</h2>
     <div>
-        <form action="edit_profile.php" method="post">
-            <input type="hidden" name="user_id" id="user_id" value="<?=$_SESSION['id']?>">
+        <form action="edit_profile.php?id=<?=$_SESSION['id']?>" method="post">
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" id="name" value="<?=$user['name']?>" required>
