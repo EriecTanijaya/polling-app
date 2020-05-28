@@ -1,4 +1,5 @@
 <?php
+
 function pdo_connect_mysql()
 {
     // Update the details below with your MySQL details

@@ -22,9 +22,20 @@ A simple website to create poll
 - admin buatin bisa liat semua stats
 
 ## How
+
+### Local
+- start service with [xampp](https://www.apachefriends.org/index.html)
 - Clone this repo
 - Import the phppoll.sql to the phpmyadmin
-- Run project on localhost using [xampp](https://www.apachefriends.org/index.html) or thru your webserver
+
+### Online Host
+- Clone this repo
+- Import the phppoll.sql to the phpmyadmin
+- Fill the database config in
+  - functions.php
+  - auth.php
+  - profile.php
+  - register_action.php
 
 ## Credit
 - [codeshack](https://codeshack.io)
