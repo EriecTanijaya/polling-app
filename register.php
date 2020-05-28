@@ -51,7 +51,7 @@
             <select name="prodi" required>
                 <option value="">Pilih Prodinyaa</option>
                 <?php
-                    $options = array('Sistem Informasi', 'Manajemen', 'Pariwisata', 'Ilmu Hukum', 'Teknik Elektro', 'Teknologi Informasi', 'Teknik Sipil', 'Arsitektur', 'Pendidikan Bahasa Inggris');
+                    $options = array('Sistem Informasi', 'Manajemen', 'Akuntansi', 'Pariwisata', 'Ilmu Hukum', 'Teknik Elektro', 'Teknologi Informasi', 'Teknik Sipil', 'Arsitektur', 'Pendidikan Bahasa Inggris');
                     foreach($options as $option) {
                         echo '<option value="'. $option .'">'. $option .'</option>';
                     }

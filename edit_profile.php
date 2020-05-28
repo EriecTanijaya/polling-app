@@ -63,7 +63,7 @@ if (!empty($_POST)) {
                 <label for="prodi">Prodi</label>
                 <select class="form-control" name="prodi" required>
                     <?php
-                        $options = array('Sistem Informasi', 'Manajemen', 'Pariwisata', 'Ilmu Hukum', 'Teknik Elektro', 'Teknologi Informasi', 'Teknik Sipil', 'Arsitektur', 'Pendidikan Bahasa Inggris');
+                        $options = array('Sistem Informasi', 'Manajemen', 'Akuntansi', 'Pariwisata', 'Ilmu Hukum', 'Teknik Elektro', 'Teknologi Informasi', 'Teknik Sipil', 'Arsitektur', 'Pendidikan Bahasa Inggris');
                         foreach($options as $option) {
                             echo '<option value="'. $option .'"'. ($option == $user['prodi'] ? 'selected' : '') .'>'. $option .'</option>';
                         }
