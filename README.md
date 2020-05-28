@@ -11,14 +11,15 @@ A simple website to create poll
 - wajib punya data 300 mahasiswa asli uib
 - ~~buat footer dan page about~~
 - ~~buat juga link source code ke ini~~
-- buat pertanyaan minimal 5, kita baru 1
+- ~~buat pertanyaan minimal 5, kita baru 1~~
 - ~~tambahin favicon~~
 - re structure file, asset sama asset dll
 - tambahin emoji/icon biar kece
 - ~~buat setiap orang bisa buat pollin sndiri, edit db buat isi kolom poll_creator
   nanti cek pas mau delete, kalau bukan creator jangan kasih, pas di index.php tampilin icon delete hanya untuk pembuat polling~~
 - ~~buat option value jurusan jurusan prodi~~
-- percantik readme ini, kasih tau pake apa aj, cara nya gmna git clone bla bla, sql ny jga
+- buat bisa edit profile, edit poll
+- admin buatin bisa liat semua stats
 
 ## How
 - Clone this repo
@@ -31,3 +32,4 @@ A simple website to create poll
 - [bootstrap](https://getbootstrap.com/)
 - [w3schools](https://www.w3schools.com/)
 - [stackoverflow](https://stackoverflow.com/)
+- [fontawesome](https://fontawesome.com/)

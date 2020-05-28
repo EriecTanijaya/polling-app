@@ -67,7 +67,7 @@ $poll_count = $stmt->num_rows;
 				<td><?=$poll_count?></td>
 			</tr>
 		</table>
-		<a href="edit.php?id=<?=$_SESSION['id']?>" class="btn btn-info">Edit Profile</a> 
+		<a href="edit_profile.php?id=<?=$_SESSION['id']?>" class="btn btn-info">Edit Profile</a> 
 	</div>
 </div>
 
