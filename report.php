@@ -32,8 +32,6 @@ if (isset($_SESSION['msg'])) {
     }
     ?>
 
-    <!-- <p>tampilin seluruh data pengguna disini, juga ada berapa user, berapa poll yang dibuat, dari prodi apa</p> -->
-
     <div>
     <form action="report.php" method="get">
         <div class="form-group">
@@ -48,7 +46,7 @@ if (isset($_SESSION['msg'])) {
     if (isset($_GET['query'])) {
         $pdo = pdo_connect_mysql();
         $query = $_GET['query'];
-        $sql = "SELECT name, npm, prodi FROM accounts WHERE (name LIKE '%". $query ."%') OR (prodi LIKE '%". $query ."%') OR (npm LIKE '%". $query ."%')";
+        $sql = "SELECT id, name, npm, prodi FROM accounts WHERE (name LIKE '%". $query ."%') OR (prodi LIKE '%". $query ."%') OR (npm LIKE '%". $query ."%')";
         $stmt = $pdo->query($sql);
 
         if ($stmt) {
@@ -66,6 +64,7 @@ if (isset($_SESSION['msg'])) {
                                 <td scope="col">Name</td>
                                 <td scope="col">NPM</td>
                                 <td scope="col">Prodi</td>
+                                <td scope="col">Action</td>
                             </tr>
                         </thead>
                         <tbody>';
@@ -77,6 +76,9 @@ if (isset($_SESSION['msg'])) {
                                 <td>'. $user['name'] .'</td>
                                 <td>'. $user['npm'] .'</td>
                                 <td>'. $user['prodi'] .'</td>
+                                <td class="actions">
+                                    <a href="view.php?id='. $user['id'] .'" class="view"><i class="fas fa-eye fa-xs"></i></a>
+                                </td>
                             </tr>';
                         $num++;
                         }
