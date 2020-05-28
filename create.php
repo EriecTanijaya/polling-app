@@ -69,7 +69,7 @@ if (!empty($_POST)) {
 
 <?=template_header('Create Poll')?>
     
-<div class="container-fluid content">
+<div class="container content">
     <?php if ($msg): ?>
         <p><?=$msg?></p>
     <?php endif;?>

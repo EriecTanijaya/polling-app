@@ -45,7 +45,6 @@
             </label>
             <input type="text" name="npm" placeholder="NPM" id="npm" required>
 
-
             <label for="prodi">
                 <i class="fas fa-user-graduate"></i>
             </label>
